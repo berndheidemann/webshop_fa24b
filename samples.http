@@ -1,0 +1,49 @@
+GET localhost:8080/articles/1
+
+###
+POST localhost:8080/suppliers
+Content-Type: application/json
+
+{
+  "name": "Ferrero",
+  "city": "Bremen",
+  "postcode": "12345",
+  "street": "iudhqwoiud",
+  "phone": "01209380192"
+}
+
+###
+GET localhost:8080/suppliers/1
+
+
+###
+POST localhost:8080/suppliers/1/articles
+Content-Type: application/json
+
+{
+  "label": "New Article",
+  "price": 19.99
+}
+
+
+###
+GET localhost:8080/articles
+
+###
+DELETE localhost:8080/articles/2
+
+###
+PATCH localhost:8080/articles/1
+Content-Type: application/json
+
+{
+  "price": 2999.99
+}
+
+###
+PATCH localhost:8080/articles/1
+Content-Type: application/json
+
+{
+  "label": "Notebook"
+}
