@@ -47,3 +47,13 @@ Content-Type: application/json
 {
   "label": "Notebook"
 }
+
+###
+GET localhost:8080/articles/1?currency=SGD
+
+###
+GET localhost:8080/articles?currency=YER
+
+
+###
+GET https://v6.exchangerate-api.com/v6/e73dffb0fef08352eece8052/latest/USD

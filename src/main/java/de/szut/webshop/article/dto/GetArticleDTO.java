@@ -1,10 +1,9 @@
-package de.szut.webshop.article;
+package de.szut.webshop.article.dto;
 
 
+import de.szut.webshop.article.ArticleEntity;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.util.Set;
 
 @Getter
 @Setter

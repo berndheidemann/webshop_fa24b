@@ -20,11 +20,13 @@ public class ArticleService implements ApplicationRunner {
 
     private ArticleRepository articleRepository;
     private SupplierRepository supplierRepository;
+    private CurrencyAPIConversionService currencyService;
 
 
-    public ArticleService (ArticleRepository repository, SupplierRepository supplierRepository) {
+    public ArticleService (ArticleRepository repository, SupplierRepository supplierRepository, CurrencyAPIConversionService currencyService) {
         this.supplierRepository = supplierRepository;
         this.articleRepository = repository;
+        this.currencyService= currencyService;
     }
 
     @Override
@@ -56,6 +58,12 @@ public class ArticleService implements ApplicationRunner {
 
             articleRepository.save(article);
         }
+    }
+
+    public ArticleEntity readById(Long id, String currency) {
+        var entity = articleRepository.findById(id).orElse(null);
+        entity.setPrice(currencyService.convert("EUR", currency, entity.getPrice()));
+        return entity;
     }
 
     public ArticleEntity readById(Long id) {

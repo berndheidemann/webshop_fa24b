@@ -1,4 +1,4 @@
-package de.szut.webshop.article;
+package de.szut.webshop.article.dto;
 
 
 import lombok.Getter;

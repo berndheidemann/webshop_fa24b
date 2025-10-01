@@ -1,6 +1,9 @@
 package de.szut.webshop.article;
 
 
+import de.szut.webshop.article.dto.AddArticleDTO;
+import de.szut.webshop.article.dto.GetArticleDTO;
+import de.szut.webshop.article.dto.PatchArticleDTO;
 import jakarta.transaction.Transactional;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -18,12 +21,12 @@ public class ArticleController {
     }
 
     @GetMapping("articles/{id}")
-    public GetArticleDTO get(@PathVariable  Long id) {
-        var entity=articleService.readById(id);
+    public GetArticleDTO get(@PathVariable  Long id, @RequestParam(required = false) String currency) {
+        var entity=articleService.readById(id, currency);
         return GetArticleDTO.toDTO(entity);
     }
 
-    // localhost:8080/suppliers/1337/articles { name="Sample", price=42.0 }
+    // localhost:8080/suppliers/1337/articles { label="Sample", price=42.0 }
     @PostMapping("suppliers/{supplierId}/articles")
     @ResponseStatus(code = HttpStatus.CREATED)
     public GetArticleDTO create(@PathVariable Long supplierId, @RequestBody AddArticleDTO dto) {
